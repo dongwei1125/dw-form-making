@@ -1,0 +1,581 @@
+$primary-color: #409eff;
+$primary-color-grid: #fdf6ec;
+$primary-background-color-grid: #e6a23c;
+$primary-background-color: #ecf5ff;
+
+@mixin scrollbar {
+  width: 6px;
+  height: 1px;
+}
+
+@mixin scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: $primary-color;
+}
+
+@mixin scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: #ededed;
+}
+
+@mixin form-item-move {
+  outline-width: 0;
+  height: 3px;
+  box-sizing: border-box;
+  font-size: 0;
+  content: "";
+  overflow: hidden;
+  padding: 0;
+  background: $primary-color;
+  border: 2px solid $primary-color;
+}
+
+@mixin action-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  line-height: 28px;
+  z-index: 9;
+
+  i {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+}
+
+@mixin drag-icon {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  bottom: -18px;
+  height: 28px;
+  line-height: 28px;
+  z-index: 9;
+
+  i {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 5px;
+    cursor: move;
+  }
+}
+
+// 主布局
+.dw-form-making-container {
+  height: 100%;
+  overflow: hidden;
+
+  .dw-form-making-header {
+    height: 50px !important;
+    box-shadow: 0 2px 10px rgba(70, 160, 252, 0.6);
+    padding: 0 10px;
+    background-image: linear-gradient(to right, #1278f6, #00b4aa);
+
+    >div {
+      height: 100%;
+    }
+  }
+
+  .dw-form-making-body {
+    .dw-form-making-elementcate {
+      padding: 8px 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+
+      >div {
+        height: 100%;
+      }
+    }
+
+    .dw-form-making-buttonview {
+      padding: 0px;
+      border-left: 1px solid #e0e0e0;
+      border-right: 1px solid #e0e0e0;
+      box-sizing: border-box;
+      min-width: 440px;
+
+      >.el-container {
+        height: 100%;
+
+        .el-header {
+          height: 45px !important;
+          line-height: 45px;
+          font-size: 18px;
+          border-bottom: 2px solid #e4e7ed;
+          text-align: right;
+        }
+
+        .el-main {
+          padding: 0px;
+        }
+      }
+    }
+
+    .dw-form-making-configoption>div {
+      height: 100%;
+    }
+  }
+
+  .dw-form-making-footer {
+    height: 30px !important;
+    line-height: 30px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 12px;
+    text-align: right;
+    color: $primary-color;
+    background: #fafafa;
+
+    a {
+      color: $primary-color;
+    }
+  }
+}
+
+// 链接头
+.dw-form-making-header>div {
+  .header-image {
+    width: 50px;
+    float: left;
+
+    img {
+      width: 100%;
+      opacity: 0.9;
+    }
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 50px;
+    font-weight: 500;
+    margin-left: 15px;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .header-link-leader {
+    float: left;
+    margin-left: 10px;
+  }
+
+  .header-link-npm {
+    float: right;
+    margin-right: 10px;
+  }
+}
+
+// 元素分类
+.dw-form-making-elementcate>div {
+  user-select: none;
+
+  .element-cate-title {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  ul {
+    position: relative;
+    overflow: hidden;
+    padding: 0 10px 10px;
+    margin: 0;
+  }
+
+  .element-cate-item {
+    font-size: 12px;
+    display: block;
+    width: 48%;
+    line-height: 26px;
+    position: relative;
+    float: left;
+    left: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 1%;
+    color: #333;
+    border: 1px solid #f4f6fc;
+
+    &:hover {
+      color: $primary-color;
+      border: 1px dashed $primary-color;
+    }
+
+    &>a {
+      display: block;
+      cursor: move;
+      background: #f4f6fc;
+      border: 1px solid #f4f6fc;
+
+      .icon {
+        margin-right: 6px;
+        margin-left: 8px;
+        font-size: 17px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+// 按钮视图
+.dw-form-making-buttonview {
+  >.el-container>.el-main {
+    background: #fafafa;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      @include scrollbar();
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @include scrollbar-thumb();
+    }
+
+    &::-webkit-scrollbar-track {
+      @include scrollbar-track();
+    }
+
+    >div {
+      background: #fff;
+      margin: 10px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      >.el-form {
+        height: 100%;
+
+        >div {
+          height: 100%;
+        }
+      }
+
+      .view-form-empty {
+        position: absolute;
+        text-align: center;
+        width: 300px;
+        font-size: 20px;
+        top: 200px;
+        left: 50%;
+        margin-left: -150px;
+        color: #ccc;
+      }
+    }
+
+    .view-form {
+      min-height: 100%;
+      border: 1px dashed #999;
+
+      .element-cate-item.move {
+        @include form-item-move;
+      }
+
+      .view-form-item {
+        position: relative;
+        border: 1px dashed rgba(170, 170, 170, 0.7);
+        background-color: rgba(236, 245, 255, 0.3);
+        margin: 2px;
+        user-select: none;
+        overflow: hidden;
+
+        &:not(.grid)::before {
+          content: attr(data-model);
+          position: absolute;
+          top: 3px;
+          right: 3px;
+          font-size: 12px;
+          color: rgb(2, 171, 181);
+          z-index: 5;
+          font-weight: 500;
+        }
+
+        &:not(.grid)::after {
+          position: absolute;
+          content: "";
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          display: block;
+          z-index: 5; // 解决计数器按钮外置
+        }
+
+        .el-form-item__content {
+          position: unset;
+        }
+
+        &:hover {
+          background: $primary-background-color;
+          outline: 1px solid $primary-color;
+        }
+
+        &.active {
+          outline: 2px solid $primary-color;
+          border: 1px solid $primary-color;
+        }
+
+        &.move {
+          @include form-item-move;
+        }
+
+        &.required {
+          .el-form-item__label::before {
+            content: "*";
+            color: #f56c6c;
+            margin-right: 4px;
+          }
+        }
+
+        .el-switch .el-switch__label {
+          background-color: initial !important;
+        }
+
+        .el-slider .el-slider__button-wrapper {
+          z-index: 0;
+        }
+
+        .item-drag {
+          @include drag-icon;
+          background: $primary-color;
+        }
+
+        .item-action {
+          @include action-icon;
+          background: $primary-color;
+        }
+      }
+
+      .view-form-item.grid {
+        padding: 5px;
+        border: 1px dashed rgba(168, 168, 168, 0.5);
+        margin: 2px;
+        box-sizing: border-box;
+        position: relative;
+        background-color: rgba(253, 246, 236, 0.3);
+
+        &:hover {
+          background: $primary-color-grid;
+          outline: 1px solid $primary-background-color-grid;
+        }
+
+        >.item-action {
+          @include action-icon;
+          background: $primary-background-color-grid;
+        }
+
+        >.item-drag {
+          @include drag-icon;
+          background: $primary-background-color-grid;
+        }
+
+        &.active {
+          outline: 2px solid $primary-background-color-grid;
+          border: 1px solid $primary-background-color-grid;
+        }
+
+        &.move {
+          @include form-item-move;
+        }
+
+        .el-row {
+          margin: 0px !important;
+        }
+
+        .el-col {
+          min-height: 50px;
+
+          .el-col-list {
+            min-height: 50px;
+            width: 100%;
+            border: 1px dashed #ccc;
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 配置参数
+.dw-form-making-configoption>div {
+  >.el-container {
+    height: 100%;
+  }
+
+  >.el-container>.el-header {
+    border-bottom: solid 2px #e4e7ed;
+    padding: 0 5px;
+
+    .property-tab {
+      height: 45px;
+      line-height: 45px;
+      display: inline-block;
+      width: 145px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+
+      &.active {
+        border-bottom: solid 2px $primary-color;
+      }
+    }
+  }
+
+  >.el-container>.el-main {
+    height: 100%;
+    padding: 0px;
+    position: relative;
+
+    >div {
+      position: absolute;
+      overflow: auto;
+      padding: 10px;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+
+      &::-webkit-scrollbar {
+        @include scrollbar;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @include scrollbar-thumb;
+      }
+
+      &::-webkit-scrollbar-track {
+        @include scrollbar-track;
+      }
+    }
+
+    .el-form-item__label {
+      padding: 0;
+      font-weight: 500;
+      line-height: 32px;
+    }
+
+    .el-form-item {
+      border-bottom: 1px solid #e1e1e1;
+      padding-bottom: 10px;
+    }
+
+    .rate-default.el-form-item {
+      .el-rate {
+        display: inline-block;
+      }
+
+      .el-button {
+        margin-left: 5px;
+      }
+    }
+
+    ul.grid-ul {
+      padding: 0;
+      margin: 10px 0 0;
+      list-style-type: none;
+
+      >li {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+
+        .limit-title {
+          width: 25px;
+          display: inline-block;
+        }
+
+        .limit-text {
+          color: #999999;
+          margin-left: 5px;
+        }
+
+        i.drag-icon {
+          font-size: 16px;
+          margin: 0 9px;
+          cursor: move;
+        }
+
+        &.active {
+          border: 1px dashed $primary-color;
+
+          &::after {
+            background: #fff;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+
+        .el-button {
+          padding: 4px;
+          margin-left: 9px;
+        }
+      }
+    }
+
+    ul.radio-ul,
+    ul.checkbox-ul {
+      padding: 0;
+      line-height: 1;
+      margin: 10px 0 0;
+
+      >li {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+
+        i.drag-icon {
+          font-size: 16px;
+          margin: 0 9px;
+          cursor: move;
+        }
+
+        .el-button {
+          padding: 4px;
+        }
+
+        &.active {
+          border: 1px dashed $primary-color;
+
+          &::after {
+            background: #fff;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          }
+        }
+      }
+
+      .el-radio {
+        margin-right: 0;
+      }
+    }
+  }
+}
