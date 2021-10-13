@@ -1,0 +1,50 @@
+{
+  "name": "dw-form-making",
+  "description": "A form designer and generator based on Vue.js.",
+  "version": "1.0.0",
+  "author": "DongWei",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build --dest ./lib",
+    "publish": "vue-cli-service build --target lib --name DwFormMaking ./src/index.js"
+  },
+  "keywords": [
+    "component",
+    "vue",
+    "form",
+    "element-ui",
+    "form-making"
+  ],
+  "main": "dist/DwFormMaking.common.js",
+  "files": [
+    "dist",
+    "docs",
+    "public",
+    "package.json",
+    "readme.md"
+  ],
+  "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.2",
+    "clipboard": "^2.0.6",
+    "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
+    "lodash": "^4.17.19",
+    "normalize.css": "^8.0.1",
+    "tinymce": "^5.4.2",
+    "vue": "^2.6.11",
+    "vuedraggable": "^2.24.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,135 @@
+@import "./layout.scss";
+@import "~assets/fonts/iconfont.css";
+
+html,
+body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.el-divider .el-divider__text {
+  color: #606266;
+}
+
+.el-rate {
+  font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+  margin-top: 6px;
+}
+
+.tox.tox-silver-sink.tox-tinymce-aux {
+  z-index: 2300;
+}
+
+.public-dialog {
+  .is-fullscreen {
+    .el-dialog__body {
+      max-height: calc(100% - 120px) !important;
+    }
+
+    &::-webkit-scrollbar {
+      @include scrollbar();
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @include scrollbar-thumb();
+    }
+
+    &::-webkit-scrollbar-track {
+      @include scrollbar-track();
+    }
+  }
+
+  .el-dialog__body {
+    padding: 20px !important;
+  }
+
+  .public-dialog-header-close,
+  .public-dialog-header-fullscreen {
+    position: absolute;
+    color: #606266;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    background: 0 0;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .public-dialog-header-fullscreen {
+    right: 46px;
+    font-size: 15px;
+    margin-top: 1px;
+  }
+}
+
+.public-dialog.preview-dialog .el-dialog__body {
+  max-height: 440px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    @include scrollbar();
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include scrollbar-thumb();
+  }
+
+  &::-webkit-scrollbar-track {
+    @include scrollbar-track();
+  }
+}
+
+.custom-area {
+  height: 50px;
+  color: #999;
+  background: #eee;
+  line-height: 50px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ace-code-editor {
+  border: 1px solid #dcdfe6;
+  position: relative;
+
+  >.disabled-div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f5f7fa;
+    cursor: no-drop;
+  }
+
+  .ace_print-margin {
+    width: 0;
+  }
+
+  .ace_scrollbar {
+    right: 1px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @include scrollbar-thumb();
+    }
+
+    &::-webkit-scrollbar-track {
+      @include scrollbar-track();
+    }
+  }
+
+  .ace_scrollbar-h::-webkit-scrollbar {
+    height: 6px;
+  }
+}
