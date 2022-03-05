@@ -8,28 +8,32 @@
       :readonly="element.options.readonly"
       :placeholder="element.options.placeholder"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     ></el-input>
   </common-view>
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwTextarea",
+  name: 'DwTextarea',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: String,
+      default: '',
+    },
   },
-};
+}
 </script>

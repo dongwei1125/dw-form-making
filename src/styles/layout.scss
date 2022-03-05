@@ -25,7 +25,7 @@ $primary-background-color: #ecf5ff;
   height: 3px;
   box-sizing: border-box;
   font-size: 0;
-  content: "";
+  content: '';
   overflow: hidden;
   padding: 0;
   background: $primary-color;
@@ -76,7 +76,7 @@ $primary-background-color: #ecf5ff;
     padding: 0 10px;
     background-image: linear-gradient(to right, #1278f6, #00b4aa);
 
-    >div {
+    > div {
       height: 100%;
     }
   }
@@ -88,7 +88,7 @@ $primary-background-color: #ecf5ff;
       height: 100%;
       box-sizing: border-box;
 
-      >div {
+      > div {
         height: 100%;
       }
     }
@@ -100,7 +100,7 @@ $primary-background-color: #ecf5ff;
       box-sizing: border-box;
       min-width: 440px;
 
-      >.el-container {
+      > .el-container {
         height: 100%;
 
         .el-header {
@@ -117,7 +117,7 @@ $primary-background-color: #ecf5ff;
       }
     }
 
-    .dw-form-making-configoption>div {
+    .dw-form-making-configoption > div {
       height: 100%;
     }
   }
@@ -138,7 +138,7 @@ $primary-background-color: #ecf5ff;
 }
 
 // 链接头
-.dw-form-making-header>div {
+.dw-form-making-header > div {
   .header-image {
     width: 50px;
     float: left;
@@ -174,7 +174,7 @@ $primary-background-color: #ecf5ff;
 }
 
 // 元素分类
-.dw-form-making-elementcate>div {
+.dw-form-making-elementcate > div {
   user-select: none;
 
   .element-cate-title {
@@ -209,7 +209,7 @@ $primary-background-color: #ecf5ff;
       border: 1px dashed $primary-color;
     }
 
-    &>a {
+    & > a {
       display: block;
       cursor: move;
       background: #f4f6fc;
@@ -233,7 +233,7 @@ $primary-background-color: #ecf5ff;
 
 // 按钮视图
 .dw-form-making-buttonview {
-  >.el-container>.el-main {
+  > .el-container > .el-main {
     background: #fafafa;
     position: relative;
 
@@ -249,7 +249,7 @@ $primary-background-color: #ecf5ff;
       @include scrollbar-track();
     }
 
-    >div {
+    > div {
       background: #fff;
       margin: 10px;
       position: absolute;
@@ -258,10 +258,10 @@ $primary-background-color: #ecf5ff;
       top: 0;
       bottom: 0;
 
-      >.el-form {
+      > .el-form {
         height: 100%;
 
-        >div {
+        > div {
           height: 100%;
         }
       }
@@ -307,7 +307,7 @@ $primary-background-color: #ecf5ff;
 
         &:not(.grid)::after {
           position: absolute;
-          content: "";
+          content: '';
           left: 0;
           right: 0;
           top: 0;
@@ -336,7 +336,7 @@ $primary-background-color: #ecf5ff;
 
         &.required {
           .el-form-item__label::before {
-            content: "*";
+            content: '*';
             color: #f56c6c;
             margin-right: 4px;
           }
@@ -374,12 +374,12 @@ $primary-background-color: #ecf5ff;
           outline: 1px solid $primary-background-color-grid;
         }
 
-        >.item-action {
+        > .item-action {
           @include action-icon;
           background: $primary-background-color-grid;
         }
 
-        >.item-drag {
+        > .item-drag {
           @include drag-icon;
           background: $primary-background-color-grid;
         }
@@ -408,17 +408,38 @@ $primary-background-color: #ecf5ff;
           }
         }
       }
+
+      .appear-leave-to {
+        opacity: 0;
+      }
+      
+      .appear-leave-active {
+        transition: all 0.5s ease;
+      }
+
+      .el-form-item.is-error {
+        input,
+        textarea {
+          border-color: #dcdfe6;
+        }
+      }
+      
+      .el-form-item.is-error {
+        .el-date-editor {
+          border-color: #dcdfe6;
+        }
+      }
     }
   }
 }
 
 // 配置参数
-.dw-form-making-configoption>div {
-  >.el-container {
+.dw-form-making-configoption > div {
+  > .el-container {
     height: 100%;
   }
 
-  >.el-container>.el-header {
+  > .el-container > .el-header {
     border-bottom: solid 2px #e4e7ed;
     padding: 0 5px;
 
@@ -440,12 +461,12 @@ $primary-background-color: #ecf5ff;
     }
   }
 
-  >.el-container>.el-main {
+  > .el-container > .el-main {
     height: 100%;
     padding: 0px;
     position: relative;
 
-    >div {
+    > div {
       position: absolute;
       overflow: auto;
       padding: 10px;
@@ -493,7 +514,7 @@ $primary-background-color: #ecf5ff;
       margin: 10px 0 0;
       list-style-type: none;
 
-      >li {
+      > li {
         display: flex;
         align-items: center;
         margin-top: 5px;
@@ -520,7 +541,7 @@ $primary-background-color: #ecf5ff;
           &::after {
             background: #fff;
             display: block;
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
@@ -542,7 +563,7 @@ $primary-background-color: #ecf5ff;
       line-height: 1;
       margin: 10px 0 0;
 
-      >li {
+      > li {
         display: flex;
         align-items: center;
         margin-top: 5px;
@@ -563,12 +584,23 @@ $primary-background-color: #ecf5ff;
           &::after {
             background: #fff;
             display: block;
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+          }
+        }
+
+        .hidden-label{
+          .el-checkbox__label{
+            width: 10px;
+          }
+    
+          .el-radio__label{
+            display: inline-block;
+            width: 10px;
           }
         }
       }

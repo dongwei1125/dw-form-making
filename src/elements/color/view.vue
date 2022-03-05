@@ -5,28 +5,32 @@
       :disabled="element.options.disabled"
       :show-alpha="element.options.showAlpha"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     ></el-color-picker>
   </common-view>
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwColor",
+  name: 'DwColor',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: String,
+      default: '',
+    },
   },
-};
+}
 </script>

@@ -9,17 +9,18 @@
 </template>
 
 <script>
-import CommonField from "../CommonField";
+import CommonField from '../CommonField'
 
 export default {
-  name: "DwTextConfig",
+  name: 'DwTextConfig',
   components: {
     CommonField,
   },
   props: {
     data: {
       type: Object,
+      default: () => ({}),
     },
   },
-};
+}
 </script>

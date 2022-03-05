@@ -7,21 +7,25 @@
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwText",
+  name: 'DwText',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
+    prop: 'value',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: String,
+      default: '',
+    },
   },
-};
+}
 </script>

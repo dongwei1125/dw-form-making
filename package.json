@@ -1,13 +1,15 @@
 {
   "name": "dw-form-making",
   "description": "A form designer and generator based on Vue.js.",
-  "version": "1.0.0",
+  "version": "1.10.0",
   "author": "DongWei",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build --dest ./lib",
-    "publish": "vue-cli-service build --target lib --name DwFormMaking ./src/index.js"
+    "publish": "vue-cli-service build --target lib --name DwFormMaking ./src/index.js",
+    "deploy": "bash deploy.sh",
+    "eslint:fix": "eslint src/**/*.js src/**/*.vue --fix"
   },
   "keywords": [
     "component",
@@ -38,7 +40,12 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
     "node-sass": "^4.12.0",
+    "prettier": "^2.5.1",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },

@@ -20,31 +20,36 @@
       :show-all-levels="element.options.showAllLevels"
       :placeholder="element.options.placeholder"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     ></el-cascader>
   </common-view>
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwCascader",
+  name: 'DwCascader',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: [Array, String],
+      default: '',
+    },
     remoteOption: {
       type: Object,
+      default: () => ({}),
     },
   },
-};
+}
 </script>

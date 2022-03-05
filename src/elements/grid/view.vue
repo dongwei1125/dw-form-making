@@ -6,32 +6,28 @@
     :align="element.options.align"
   >
     <el-col
+      v-for="(column, index) in element.columns"
+      :key="index"
       :xs="element.options.isFlex ? undefined : column.xs"
       :sm="element.options.isFlex ? undefined : column.sm"
       :md="element.options.isFlex ? undefined : column.md"
       :lg="element.options.isFlex ? undefined : column.lg"
       :xl="element.options.isFlex ? undefined : column.xl"
       :span="column.span"
-      v-for="(column, index) in element.columns"
-      :key="index"
     >
       <draggable
         v-if="draggable"
-        style="min-height: 50px"
-        @add="handleAdd($event, column)"
         v-model="column.list"
+        style="min-height: 50px"
         v-bind="{
           group: 'view',
           animation: 200,
           ghostClass: 'move',
           handle: '.drag-icon',
         }"
+        @add="handleAdd($event, column)"
       >
-        <transition-group
-          :name="column.list.length ? 'appear' : ''"
-          tag="div"
-          class="el-col-list"
-        >
+        <transition-group :name="column.list.length ? 'appear' : ''" tag="div" class="el-col-list">
           <widget
             v-for="(element, index) in column.list"
             :key="element.key"
@@ -41,18 +37,19 @@
           />
         </transition-group>
       </draggable>
+
       <template v-else>
         <component
           :is="element.component"
+          v-for="element in column.list"
+          :key="element.key"
           v-model="models[element.model]"
           :element="element"
           :models="models"
           :slots="slots"
-          v-for="element in column.list"
-          :key="element.key"
-          :remoteOption="remoteOption"
+          :remote-option="remoteOption"
           :draggable="draggable"
-          @editor-upload-image="(data) => $emit('editor-upload-image', data)"
+          @editor-upload-image="data => $emit('editor-upload-image', data)"
         >
           <template v-for="slot in slots" :slot="slot" slot-scope="scope">
             <slot :name="slot" :model="scope.model" />
@@ -64,31 +61,25 @@
 </template>
 
 <script>
-import Draggable from "vuedraggable";
-import components from "elements/view";
+import components from 'elements/view'
 
-import store from "store/index";
+import Draggable from 'vuedraggable'
+import store from 'store/index'
 
 export default {
-  name: "DwGrid",
-  beforeCreate() {
-    Object.assign(this.$options.components, components);
-  },
+  name: 'DwGrid',
   components: {
     Draggable,
-    Widget: () => import("components/ButtonView/Widget.vue"),
-  },
-  computed: {
-    select() {
-      return store.state.select;
-    },
+    Widget: () => import('components/ButtonView/Widget.vue'),
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
     config: {
       type: Object,
+      default: () => ({}),
     },
     draggable: {
       type: Boolean,
@@ -96,27 +87,29 @@ export default {
     },
     models: {
       type: Object,
+      default: () => ({}),
     },
     slots: {
       type: Array,
+      default: () => [],
     },
     remoteOption: {
       type: Object,
+      default: () => ({}),
     },
+  },
+  computed: {
+    select() {
+      return store.state.select
+    },
+  },
+  beforeCreate() {
+    Object.assign(this.$options.components, components)
   },
   methods: {
     handleAdd({ newIndex }, column) {
-      store.commit("SET_SELECT", column.list[newIndex]);
+      store.commit('SET_SELECT', column.list[newIndex])
     },
   },
-};
+}
 </script>
-<style lang="scss" scoped>
-.appear-leave-to {
-  opacity: 0;
-}
-
-.appear-leave-active {
-  transition: all 0.5s ease;
-}
-</style>

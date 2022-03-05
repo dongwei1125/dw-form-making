@@ -14,28 +14,32 @@
       :start-placeholder="element.options.startPlaceholder"
       :end-placeholder="element.options.endPlaceholder"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     ></el-time-picker>
   </common-view>
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwTime",
+  name: 'DwTime',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: [String, Array],
+      default: '',
+    },
   },
-};
+}
 </script>

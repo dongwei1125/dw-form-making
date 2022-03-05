@@ -4,7 +4,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  productionSourceMap: false, 
+  productionSourceMap: false,
   publicPath: './',
   chainWebpack: config => {
     config.resolve.alias
@@ -14,5 +14,5 @@ module.exports = {
       .set('elements', resolve('src/elements'))
       .set('store', resolve('src/store'))
       .set('utils', resolve('src/utils'))
-  }
-};
+  },
+}

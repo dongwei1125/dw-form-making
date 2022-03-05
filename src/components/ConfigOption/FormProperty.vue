@@ -9,13 +9,8 @@
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="表单标签宽度">
-        <el-input-number
-          v-model="data.labelWidth"
-          :min="0"
-          :max="200"
-          :step="10"
-        ></el-input-number>
+      <el-form-item label="表单标签宽度（px）">
+        <el-input-number v-model="data.labelWidth" :min="0" :max="200" :step="10"></el-input-number>
       </el-form-item>
 
       <el-form-item label="组件尺寸">
@@ -42,14 +37,14 @@
 </template>
 
 <script>
-import store from "store/index.js";
+import store from 'store/index.js'
 
 export default {
-  name: "FormProperty",
+  name: 'FormProperty',
   computed: {
     data() {
-      return store.state.data.config;
+      return store.state.data.config
     },
   },
-};
+}
 </script>
