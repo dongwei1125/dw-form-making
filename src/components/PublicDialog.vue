@@ -1,7 +1,7 @@
 <template>
   <el-dialog
-    :visible.sync="dialogFormVisible"
     v-if="show"
+    :visible.sync="dialogFormVisible"
     :width="width"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
@@ -13,20 +13,19 @@
   >
     <template slot="title">
       <span class="public-dialog-header-title">{{ title }}</span>
-      <el-button
-        v-if="fullscreen"
-        class="public-dialog-header-fullscreen"
-        @click="handleFull"
-        type="text"
-      >
+
+      <el-button v-if="fullscreen" class="public-dialog-header-fullscreen" type="text" @click="handleFull">
         <i class="el-icon-full-screen"></i>
       </el-button>
-      <el-button class="public-dialog-header-close" @click="close" type="text">
+
+      <el-button class="public-dialog-header-close" type="text" @click="close">
         <i class="el-icon-close"></i>
       </el-button>
     </template>
+
     <slot name="body" />
-    <template slot="footer" class="dialog-footer">
+
+    <template slot="footer">
       <slot name="action" />
     </template>
   </el-dialog>
@@ -34,7 +33,7 @@
 
 <script>
 export default {
-  name: "PublicDialog",
+  name: 'PublicDialog',
   props: {
     show: Boolean,
     fullscreen: {
@@ -42,28 +41,29 @@ export default {
       default: false,
     },
     title: {
-      type: String | Number,
+      type: [String, Number],
+      default: '',
     },
     width: {
       type: String,
-      default: "50%",
+      default: '50%',
     },
   },
   data() {
     return {
       dialogFormVisible: true,
       full: false,
-    };
+    }
   },
   methods: {
     handleFull() {
-      this.full = !this.full;
+      this.full = !this.full
     },
 
     close() {
-      this.$emit("update:show", false);
-      this.full = false;
+      this.$emit('update:show', false)
+      this.full = false
     },
   },
-};
+}
 </script>

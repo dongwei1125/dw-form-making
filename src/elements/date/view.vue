@@ -14,28 +14,32 @@
       :end-placeholder="element.options.endPlaceholder"
       :range-separator="element.options.rangeSeparator"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     ></el-date-picker>
   </common-view>
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwDate",
+  name: 'DwDate',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: [Array, String],
+      default: '',
+    },
   },
-};
+}
 </script>

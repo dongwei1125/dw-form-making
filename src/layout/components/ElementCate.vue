@@ -10,8 +10,8 @@
         sort：false 同组别拖动后不排序
       -->
       <draggable
-        tag="ul"
         v-model="basic"
+        tag="ul"
         v-bind="{
           group: {
             name: 'view',
@@ -22,11 +22,7 @@
         }"
         :clone="handleMoveClone"
       >
-        <li
-          class="element-cate-item"
-          v-for="(item, index) in basic"
-          :key="index"
-        >
+        <li v-for="(item, index) in basic" :key="index" class="element-cate-item">
           <a>
             <i class="icon iconfont" :class="item.icon"></i>
             <span>{{ item.name }}</span>
@@ -38,8 +34,8 @@
     <template v-if="advance.length">
       <div class="element-cate-title">高级字段</div>
       <draggable
-        tag="ul"
         v-model="advance"
+        tag="ul"
         v-bind="{
           group: {
             name: 'view',
@@ -50,11 +46,7 @@
         }"
         :clone="handleMoveClone"
       >
-        <li
-          class="element-cate-item"
-          v-for="(item, index) in advance"
-          :key="index"
-        >
+        <li v-for="(item, index) in advance" :key="index" class="element-cate-item">
           <a>
             <i class="icon iconfont" :class="item.icon"></i>
             <span>{{ item.name }}</span>
@@ -66,8 +58,8 @@
     <template v-if="layout.length">
       <div class="element-cate-title">布局字段</div>
       <draggable
-        tag="ul"
         v-model="layout"
+        tag="ul"
         v-bind="{
           group: {
             name: 'view',
@@ -78,11 +70,7 @@
         }"
         :clone="handleMoveClone"
       >
-        <li
-          class="element-cate-item"
-          v-for="(item, index) in layout"
-          :key="index"
-        >
+        <li v-for="(item, index) in layout" :key="index" class="element-cate-item">
           <a>
             <i class="icon iconfont" :class="item.icon"></i>
             <span>{{ item.name }}</span>
@@ -94,34 +82,36 @@
 </template>
 
 <script>
-import Draggable from "vuedraggable";
+import Draggable from 'vuedraggable'
 
-import { basic, advance, layout } from "elements/index";
-import { uuid, deepClone } from "utils/index";
+import { basic, advance, layout } from 'elements/index'
+import { uuid, deepClone } from 'utils/index'
 
 export default {
-  name: "ElementCate",
+  name: 'ElementCate',
   components: { Draggable },
   data() {
     return {
       basic,
       advance,
       layout,
-    };
+    }
   },
   methods: {
     handleMoveClone(element) {
-      const key = uuid();
-      const el = deepClone(element);
+      const key = uuid()
+      const el = deepClone(element)
+
       // 级联选项
-      if (element.type === "cascader") {
-        el.options.remoteOption = "cascader_option_" + key;
+      if (element.type === 'cascader') {
+        el.options.remoteOption = 'cascader_option_' + key
       }
+
       return Object.assign(el, {
         key,
-        model: element.type + "_" + key,
-      });
+        model: element.type + '_' + key,
+      })
     },
   },
-};
+}
 </script>

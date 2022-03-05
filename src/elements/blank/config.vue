@@ -3,17 +3,18 @@
 </template>
 
 <script>
-import CommonField from "../CommonField";
+import CommonField from '../CommonField'
 
 export default {
-  name: "DwBlankConfig",
+  name: 'DwBlankConfig',
   components: {
     CommonField,
   },
   props: {
     data: {
       type: Object,
+      default: () => ({}),
     },
   },
-};
+}
 </script>

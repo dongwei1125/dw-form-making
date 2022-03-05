@@ -1,8 +1,8 @@
 <template>
   <common-view :element="element">
     <el-select
-      key="multiple"
       v-if="element.options.multiple"
+      key="multiple"
       :style="{ width: element.options.width }"
       :disabled="element.options.disabled"
       multiple
@@ -10,7 +10,7 @@
       :clearable="element.options.clearable"
       :placeholder="element.options.placeholder"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     >
       <el-option
         v-for="item in element.options.options"
@@ -19,9 +19,10 @@
         :value="item.value"
       ></el-option>
     </el-select>
+
     <el-select
-      key="default"
       v-else
+      key="default"
       :style="{ width: element.options.width }"
       :disabled="element.options.disabled"
       :multiple="false"
@@ -29,7 +30,7 @@
       :clearable="element.options.clearable"
       :placeholder="element.options.placeholder"
       :value="value"
-      @input="(value) => $emit('change', value)"
+      @input="value => $emit('change', value)"
     >
       <el-option
         v-for="item in element.options.options"
@@ -42,22 +43,26 @@
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwSelect",
+  name: 'DwSelect',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: [String, Array],
+      default: '',
+    },
   },
-};
+}
 </script>

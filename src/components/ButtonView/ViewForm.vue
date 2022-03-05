@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-if="data.list.length == 0" class="view-form-empty">
-      从左侧拖拽添加字段
-    </div>
+    <div v-if="data.list.length == 0" class="view-form-empty">从左侧拖拽添加字段</div>
+
     <el-form
       :size="data.config.size"
       :label-width="data.config.labelWidth + 'px'"
       :label-position="data.config.labelPosition"
+      :hide-required-asterisk="data.config.hideAsterisk"
     >
       <draggable
         v-model="data.list"
@@ -18,11 +18,7 @@
         }"
         @add="handleAdd"
       >
-        <transition-group
-          class="view-form"
-          :name="data.list.length ? 'appear' : ''"
-          tag="div"
-        >
+        <transition-group class="view-form" :name="data.list.length ? 'appear' : ''" tag="div">
           <widget
             v-for="(element, index) in data.list"
             :key="element.key"
@@ -37,37 +33,26 @@
 </template>
 
 <script>
-import Draggable from "vuedraggable";
+import Draggable from 'vuedraggable'
+import Widget from './Widget'
 
-import Widget from "./Widget";
-
-import store from "store/index.js";
+import store from 'store/index.js'
 
 export default {
-  name: "ViewForm",
+  name: 'ViewForm',
   components: {
     Draggable,
     Widget,
   },
   computed: {
     data() {
-      return store.state.data;
+      return store.state.data
     },
   },
   methods: {
     handleAdd({ newIndex }) {
-      store.commit("SET_SELECT", this.data.list[newIndex]);
+      store.commit('SET_SELECT', this.data.list[newIndex])
     },
   },
-};
+}
 </script>
-
-<style lang="scss" scoped>
-.appear-leave-to {
-  opacity: 0;
-}
-
-.appear-leave-active {
-  transition: all 0.5s ease;
-}
-</style>

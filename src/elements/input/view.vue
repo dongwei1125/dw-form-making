@@ -1,7 +1,7 @@
 <template>
   <common-view :element="element">
     <el-input
-      v-if="['number', 'integer', 'float'].includes(element.options.type)"
+      v-if="element.options.isType && ['number', 'integer', 'float'].includes(element.options.type)"
       type="number"
       :style="{ width: element.options.width }"
       :placeholder="element.options.placeholder"
@@ -11,6 +11,7 @@
       :value="value"
       @input="input"
     ></el-input>
+
     <el-input
       v-else
       :style="{ width: element.options.width }"
@@ -25,31 +26,37 @@
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwInput",
+  name: 'DwInput',
   components: {
     CommonView,
   },
   model: {
-    prop: "value",
-    event: "change",
+    prop: 'value',
+    event: 'change',
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
-    value: {},
+    value: {
+      type: [String, Number],
+      default: '',
+    },
   },
   methods: {
     input(value) {
-      const type = this.element.options.type;
-      if (["number", "integer", "float"].includes(type) && value !== "") {
-        value = Number(value);
+      const { type, isType } = this.element.options
+
+      if (isType && ['number', 'integer', 'float'].includes(type) && value !== '') {
+        value = Number(value)
       }
-      this.$emit("change", value);
+
+      this.$emit('change', value)
     },
   },
-};
+}
 </script>

@@ -9,20 +9,22 @@
 </template>
 
 <script>
-import CommonView from "../CommonView";
+import CommonView from '../CommonView'
 
 export default {
-  name: "DwBlank",
+  name: 'DwBlank',
   components: {
     CommonView,
   },
   props: {
     element: {
       type: Object,
+      default: () => ({}),
     },
     models: {
       type: Object,
+      default: () => ({}),
     },
   },
-};
+}
 </script>

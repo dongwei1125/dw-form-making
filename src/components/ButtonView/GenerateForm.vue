@@ -14,15 +14,15 @@
     >
       <component
         :is="element.component"
-        :remoteOption="remoteOption"
-        @editor-upload-image="(data) => $emit('editor-upload-image', data)"
-        :element="element"
         v-for="element in data.list"
         :key="element.key"
+        v-model="models[element.model]"
+        :remote-option="remoteOption"
+        :element="element"
         :models="models"
         :slots="slots"
         :draggable="false"
-        v-model="models[element.model]"
+        @editor-upload-image="data => $emit('editor-upload-image', data)"
       >
         <template v-for="slot in slots" :slot="slot" slot-scope="scope">
           <slot :name="slot" :model="scope.model" />
@@ -33,22 +33,25 @@
 </template>
 
 <script>
-import components from "elements/view";
+import components from 'elements/view'
 
-import { deepClone } from "utils/index";
+import { deepClone } from 'utils/index'
 
 export default {
-  name: "GenerateForm",
+  name: 'GenerateForm',
   components,
   props: {
     data: {
       type: Object,
+      default: () => ({}),
     },
     value: {
       type: Object,
+      default: () => ({}),
     },
     remoteOption: {
       type: Object,
+      default: () => ({}),
     },
   },
   data() {
@@ -56,15 +59,15 @@ export default {
       models: {},
       rules: {},
       slots: [],
-    };
+    }
   },
   created() {
-    this.handleSetModels();
+    this.handleSetModels()
   },
   methods: {
     reset() {
-      this.$refs.modelsForm.resetFields();
-      this.resetTimePicker();
+      this.$refs.modelsForm.resetFields()
+      this.resetTimePicker()
     },
 
     resetTimePicker() {
@@ -75,73 +78,75 @@ export default {
           this.models[key].length === 1 &&
           this.models[key][0] === null
         ) {
-          this.models[key] = null;
+          this.models[key] = null
         }
       }
     },
 
     getData() {
       return new Promise((resolve, reject) => {
-        this.$refs.modelsForm.validate((valid) => {
+        this.$refs.modelsForm.validate(valid => {
           if (valid) {
-            resolve(deepClone(this.models));
+            resolve(deepClone(this.models))
           } else {
-            reject();
-            return false;
+            reject()
           }
-        });
-      });
+        })
+      })
     },
 
     handleSetModels() {
-      const models = {};
-      const rules = {};
-      const slots = [];
-      getGridModel(this.data.list);
-      this.rules = rules;
-      this.slots = slots;
-      this.models = Object.assign(models, deepClone(this.value));
+      const models = {}
+      const rules = {}
+      const slots = []
+
+      getGridModel(this.data.list)
+
+      this.rules = rules
+      this.slots = slots
+      this.models = Object.assign(models, deepClone(this.value))
 
       function getGridModel(list) {
-        list.forEach((element) => {
-          if (element.type === "grid") {
-            element.columns.forEach((column) => {
+        list.forEach(element => {
+          if (element.type === 'grid') {
+            element.columns.forEach(column => {
               if (column.list.length) {
-                getGridModel(column.list);
+                getGridModel(column.list)
               }
-            });
+            })
           } else {
-            if (element.type === "blank") {
-              slots.push(element.model);
+            if (element.type === 'blank') {
+              slots.push(element.model)
             }
+
             rules[element.model] = [
               {
                 required: !!element.options.required,
-                message:
-                  element.options.requiredMessage || `请输入${element.name}`,
+                message: element.options.requiredMessage || `请输入${element.name}`,
               },
-            ];
+            ]
+
             if (element.options.isType) {
               rules[element.model].push({
                 type: element.options.type,
-                message:
-                  element.options.typeMessage || `${element.name}验证不匹配`,
-              });
+                message: element.options.typeMessage || `${element.name}验证不匹配`,
+              })
             }
+
             if (element.options.isPattern) {
               rules[element.model].push({
                 pattern: new RegExp(element.options.pattern),
-                message:
-                  element.options.patternMessage || `${element.name}格式不匹配`,
-              });
+                message: element.options.patternMessage || `${element.name}格式不匹配`,
+              })
             }
-            if (element.type !== "divider") {
-              models[element.model] = element.options.defaultValue;
+
+            if (element.type !== 'divider') {
+              models[element.model] = element.options.defaultValue
             }
           }
-        });
+        })
       }
     },
   },
-};
+}
 </script>

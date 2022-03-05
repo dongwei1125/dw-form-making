@@ -1,21 +1,20 @@
 <template>
   <div>
     <el-form size="small" label-position="top">
-      <el-form-item label="字段标识" v-if="field">
+      <el-form-item v-if="field" label="字段标识">
         <el-input v-model="data.model"></el-input>
       </el-form-item>
-      <el-form-item label="标签" v-if="name">
+
+      <el-form-item v-if="name" label="标签">
         <el-input v-model="data.name"></el-input>
       </el-form-item>
-      <el-form-item label="宽度" v-if="width">
+
+      <el-form-item v-if="width" label="宽度（% / px）">
         <el-input v-model="data.options.width"></el-input>
       </el-form-item>
-      <el-form-item label="标签宽度" v-if="labelWidth">
-        <el-checkbox
-          v-model="data.options.isLabelWidth"
-          style="margin-right: 5px"
-          >自定义</el-checkbox
-        >
+
+      <el-form-item v-if="labelWidth" label="标签宽度（px）">
+        <el-checkbox v-model="data.options.isLabelWidth" style="margin-right: 5px">自定义</el-checkbox>
         <el-input-number
           v-model="data.options.labelWidth"
           :disabled="!data.options.isLabelWidth"
@@ -23,22 +22,28 @@
           :step="10"
         ></el-input-number>
       </el-form-item>
-      <el-form-item label="隐藏标签" v-if="hideLabel">
+
+      <el-form-item v-if="hideLabel" label="隐藏标签">
         <el-switch v-model="data.options.hideLabel"></el-switch>
       </el-form-item>
+
       <slot name="custom" />
-      <el-form-item label="自定义Class" v-if="customClass">
+
+      <el-form-item v-if="customClass" label="自定义Class">
         <el-input v-model="data.options.customClass"></el-input>
       </el-form-item>
-      <el-form-item label="操作属性" v-if="option">
+
+      <el-form-item v-if="option" label="操作属性">
         <slot name="option" />
       </el-form-item>
-      <el-form-item label="校验规则" v-if="required">
+
+      <el-form-item v-if="required" label="校验规则">
         <el-checkbox v-model="data.options.required">必填</el-checkbox>
+
         <el-input
-          style="margin-left: 24px; width: 250px"
           v-if="data.options.required"
           v-model="data.options.requiredMessage"
+          style="margin-left: 24px; width: 250px"
           size="mini"
           placeholder="自定义错误提示"
         ></el-input>
@@ -50,10 +55,11 @@
 
 <script>
 export default {
-  name: "CommonField",
+  name: 'CommonField',
   props: {
     data: {
       type: Object,
+      default: () => ({}),
     },
     field: {
       type: Boolean,
@@ -88,5 +94,5 @@ export default {
       default: true,
     },
   },
-};
+}
 </script>

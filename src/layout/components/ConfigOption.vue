@@ -9,11 +9,7 @@
         >
           字段属性
         </div>
-        <div
-          class="property-tab"
-          :class="{ active: property == 'form' }"
-          @click="handleSelectConfig('form')"
-        >
+        <div class="property-tab" :class="{ active: property == 'form' }" @click="handleSelectConfig('form')">
           表单属性
         </div>
       </el-header>
@@ -29,24 +25,24 @@
 </template>
 
 <script>
-import FieldProperty from "components/ConfigOption/FieldProperty";
-import FormProperty from "components/ConfigOption/FormProperty";
+import FieldProperty from 'components/ConfigOption/FieldProperty'
+import FormProperty from 'components/ConfigOption/FormProperty'
 
 export default {
-  name: "ConfigOption",
+  name: 'ConfigOption',
   components: {
     FieldProperty,
     FormProperty,
   },
   data() {
     return {
-      property: "field",
-    };
+      property: 'field',
+    }
   },
   methods: {
     handleSelectConfig(property) {
-      this.property = property;
+      this.property = property
     },
   },
-};
+}
 </script>

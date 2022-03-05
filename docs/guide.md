@@ -41,10 +41,7 @@ Vue.use(DwFormMaking)
 #### 部分引入
 
 ```javascript
-import {
-  GenerateForm,
-  MakingForm
-} from 'dw-form-making'
+import { GenerateForm, MakingForm } from 'dw-form-making'
 import 'dw-form-making/dist/DwFormMaking.css'
 
 Vue.component(GenerateForm.name, GenerateForm)
@@ -65,7 +62,7 @@ Vue.component(MakingForm.name, MakingForm)
 
 ```html
 <template>
-    <making-form />
+  <making-form />
 </template>
 ```
 
@@ -73,7 +70,7 @@ Vue.component(MakingForm.name, MakingForm)
 
 ```html
 <template>
-    <generate-form :data="jsonData" :value="editData" ref="generateForm" ... />
+  <generate-form :data="jsonData" :value="editData" ref="generateForm" ... />
 </template>
 ```
 
@@ -87,10 +84,9 @@ Vue.component(MakingForm.name, MakingForm)
   + failure [Function] 失败回调, 参数为失败说明
   */
   editorUploadImage({ model, blobInfo, success, failure }) {
-    // success('图片src')/failure('失败说明')可异步调用
+    // success(图片地址) / failure(失败说明) 可异步调用
     // success('http://xxx.xxx.xxx/xxx/image-url.png')
     // failure('上传失败')
-
     success('data:image/jpeg;base64,' + blobInfo.base64())
   }, 
 ```

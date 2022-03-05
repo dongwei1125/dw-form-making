@@ -1,22 +1,19 @@
 <template>
-  <component
-    :is="component.component && `${component.component}Config`"
-    :data="component"
-  />
+  <component :is="component.component && `${component.component}Config`" :data="component" />
 </template>
 
 <script>
-import components from "elements/config";
+import components from 'elements/config'
 
-import store from "store/index.js";
+import store from 'store/index.js'
 
 export default {
-  name: "FieldProperty",
+  name: 'FieldProperty',
   components,
   computed: {
     component() {
-      return store.state.select;
+      return store.state.select
     },
   },
-};
+}
 </script>

@@ -20,26 +20,24 @@
 
     <el-footer class="dw-form-making-footer">
       Powered by
-      <a href="https://github.com/dongwei1125/dw-form-making" target="black"
-        >dw-form-making</a
-      >
+      <a href="https://github.com/dongwei1125/dw-form-making" target="black">dw-form-making</a>
     </el-footer>
   </el-container>
 </template>
 
 <script>
-import LinkHeader from "./components/LinkHeader";
-import ElementCate from "./components/ElementCate";
-import ButtonView from "./components/ButtonView";
-import ConfigOption from "./components/ConfigOption";
+import LinkHeader from './components/LinkHeader'
+import ElementCate from './components/ElementCate'
+import ButtonView from './components/ButtonView'
+import ConfigOption from './components/ConfigOption'
 
 export default {
-  name: "MakingForm",
+  name: 'MakingForm',
   components: {
     LinkHeader,
     ElementCate,
     ButtonView,
     ConfigOption,
   },
-};
+}
 </script>
