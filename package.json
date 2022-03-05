@@ -1,7 +1,7 @@
 {
   "name": "dw-form-making",
   "description": "A form designer and generator based on Vue.js.",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "author": "DongWei",
   "private": false,
   "scripts": {

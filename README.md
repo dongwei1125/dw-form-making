@@ -10,7 +10,7 @@
   </a>
 
   <a href="https://www.npmjs.com/package/dw-form-making">
-    <img src="https://img.shields.io/badge/npm-1.1.0-blue.svg" alt="npm">
+    <img src="https://img.shields.io/badge/npm-1.10.1-blue.svg" alt="npm">
   </a>
 </p>
 
