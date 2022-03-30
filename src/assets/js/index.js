@@ -186,6 +186,6 @@ const consoleFont =
 ██║ ╚═╝ ██║██║  ██║██║  ██╗██║██║ ╚████║╚██████╔╝
 ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝` +
   '\n\n' +
-  'Release 1.10.1. Powered by dongwei.'
+  'Release 1.10.2 Powered by dongwei.'
 
 export { defaultJson, consoleFont, cascaderOption }
